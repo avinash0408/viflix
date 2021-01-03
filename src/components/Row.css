@@ -29,3 +29,31 @@
 .row__poster:hover {
   transform: scale(1.08);
 }
+@media only screen and (max-width: 600px) {
+  .row__posters {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 8px;
+    scrollbar-color: #111 #111;
+  }
+  .row {
+    margin-left: 10px;
+    color: white;
+  }
+  .row__posters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .row__poster {
+    object-fit: contain;
+    width: 25%;
+    padding: 1%;
+    max-height: 100px;
+    margin-right: 1px;
+    transition: transform 450ms;
+  }
+  .row__posterLarge {
+    max-height: 250px;
+  }
+}

@@ -4,10 +4,17 @@ import YouTube from 'react-youtube';
 import requests from "../request";
 import './Banner.css';
 import movieTrailer from 'movie-trailer';
+import Search from './Search';
 
 function Banner() {
     const [movie,setMovie]=useState([]);
-    const [trailerUrl,setTrailerUrl]=useState("");
+    const [Search_mv,setSearch_mv]=useState([]);
+    const [inputValue, setInputValue] = React.useState("");
+    const search_li={
+        id:0,
+        title:"Some",
+        Year:"2012"
+    };
     useEffect(() => {
         async function fetchData(){
             const request=await axios.get(requests.fetchTopRated);
@@ -21,26 +28,11 @@ function Banner() {
     function truncate(str,n){
         return str?.length >n ? str.substr(0,n-1)+"...":str;
     }
-    const opts={
-        height: "390",
-        width: "100%",
-        // playerVars:{
-        //     autoplay :1,
-        // },
+    function searchChangeHandler(event){
+        setInputValue(event.target.value);
+        console.log(inputValue);
     }
-    const handleClick = (movie) => {
-        console.log("hey");
-        if(trailerUrl){
-            setTrailerUrl('');
-        }
-        else{
-            movieTrailer(movie?.name||movie?.title||movie?.original_name||"")
-            .then((url) => {
-                const urlParams=new URLSearchParams(new URL(url).search);
-                setTrailerUrl(urlParams.get('v'));
-            }).catch((error)=>console.log(error));
-        }
-    }
+  
     return (
         <header className="banner"
         style={{
@@ -51,6 +43,8 @@ function Banner() {
         >
           
             <div className="banner__content">
+                <input id="search_mv" value={inputValue} onChange={searchChangeHandler} placeholder="Search here.."/>
+                {/* <Search search_in={document.getElementById('search_mv').value}/> */}
                 <h1 className="banner__title">
             {movie?.title || movie?.name || movie?.original_name}
                 </h1>
