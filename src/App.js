@@ -5,6 +5,7 @@ import requests from './request';
 import Banner from './components/Banner';
 import Nav from './components/Nav';
 import React from 'react';
+import Footer from './components/Footer';
 
 function App() {
   const [search,setSearch]=React.useState(null);
@@ -27,6 +28,7 @@ function App() {
      <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
      <Row title="Romantic Movies" fetchUrl={requests.fetchRomanceMovies}/>
      <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+     <Footer />
     </div>
   );
   }
@@ -39,7 +41,7 @@ function App() {
        <Banner />
        <Row title="Results" fetchUrl={`${requests.fetchSearch}${search}`}
        isLarge/>
-
+      <Footer />
        </div>
        );
   }
