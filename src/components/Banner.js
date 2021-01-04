@@ -1,20 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import axios from "../axios";
-import YouTube from 'react-youtube';
 import requests from "../request";
 import './Banner.css';
-import movieTrailer from 'movie-trailer';
-import Search from './Search';
+
 
 function Banner() {
     const [movie,setMovie]=useState([]);
-    const [Search_mv,setSearch_mv]=useState([]);
-    const [inputValue, setInputValue] = React.useState("");
-    const search_li={
-        id:0,
-        title:"Some",
-        Year:"2012"
-    };
+    
+  
+    
     useEffect(() => {
         async function fetchData(){
             const request=await axios.get(requests.fetchTopRated);
@@ -28,10 +22,8 @@ function Banner() {
     function truncate(str,n){
         return str?.length >n ? str.substr(0,n-1)+"...":str;
     }
-    function searchChangeHandler(event){
-        setInputValue(event.target.value);
-        console.log(inputValue);
-    }
+
+  
   
     return (
         <header className="banner"
@@ -43,8 +35,7 @@ function Banner() {
         >
           
             <div className="banner__content">
-                <input id="search_mv" value={inputValue} onChange={searchChangeHandler} placeholder="Search here.."/>
-                {/* <Search search_in={document.getElementById('search_mv').value}/> */}
+             
                 <h1 className="banner__title">
             {movie?.title || movie?.name || movie?.original_name}
                 </h1>

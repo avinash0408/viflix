@@ -30,6 +30,7 @@ function Row(props) {
             setTrailerUrl('');
         }
         else{
+            console.log(movie?.name||movie?.title||movie?.original_name);
             movieTrailer(movie?.name||movie?.title||movie?.original_name||"")
             .then((url) => {
                 const urlParams=new URLSearchParams(new URL(url).search);

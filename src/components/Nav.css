@@ -27,3 +27,26 @@
 .nav__black {
   background-color: #111;
 }
+
+.search {
+  position: fixed;
+  font-family: inherit;
+  object-fit: contain;
+  border-radius: 50px;
+  right: 100px;
+  border: 2px solid;
+  padding: 0.5rem 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .search {
+    width: 40%;
+    right: 20px;
+    top: 12px;
+    font-family: inherit;
+    object-fit: contain;
+  }
+  .nav__avatar {
+    display: none;
+  }
+}
